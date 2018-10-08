@@ -19,8 +19,20 @@ return string.split[0]
 end
 
 def titleize(string)
-big_caps_array = string.split.map(&:capitalize).join(" ")
+big_caps_array = string.split.map(&:capitalize)
+first_small_cap = []
+first_small_cap << big_caps_array[0]
+big_caps_array[1..-1].each do |word|
+    if word.length <= 3
+      first_small_cap << word.downcase
+    else
+      first_small_cap << word
+    end
+  end
+return first_small_cap.join (" ")
 end
+
+
 
 # my_array.each_with_index do |item, index|
 #    if index == 0
